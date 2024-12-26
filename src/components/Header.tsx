@@ -9,13 +9,11 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import logoDark from "../assets/logo-dark.png";
 import logoLight from "../assets/logo-light.png";
 import Orck from "../assets/flagOrc.png";
 import Ua from "../assets/flagUa.png";
 import Uk from "../assets/flagUk.png";
+import { MAIN_COLORS } from "../root/color";
 
 const Header: React.FC = () => {
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -41,13 +39,15 @@ const Header: React.FC = () => {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 1300,
-        backgroundColor: "#060922",
-        color: "#FFF",
+        zIndex: 1200,
+        backgroundColor: MAIN_COLORS.headerBG,
+        color: MAIN_COLORS.clrWhite,
+        paddingLeft:"100px",
+        paddingRight:"100px"
       }}
     >
       <Toolbar>
-       
+        {/* Логотип */}
         <Box sx={{ flexGrow: 1 }}>
           <img
             src={logoLight}
@@ -55,17 +55,21 @@ const Header: React.FC = () => {
             style={{ height: "40px" }}
           />
         </Box>
-        <Box sx={{display:"flex",alignItems: "center", marginRight:"550px"}}>
-        <Button color="inherit">Search</Button>
+
+        {/* Навигация */}
+        <Box sx={{ display: "flex", alignItems: "center", marginRight: "450px", gap: "35px" }}>
+          <Button color="inherit">Search</Button>
           <Button color="inherit">Blog</Button>
           <Button color="inherit">Portfolio</Button>
           <Button color="inherit">Pages</Button>
         </Box>
+
+        {/* Меню выбора языка */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <Button
             color="inherit"
             onClick={handleLanguageMenuOpen}
-            sx={{ textTransform: "none" }}
+            sx={{ textTransform: "none", width: "100px" }}
           >
             <img
               src={
@@ -93,7 +97,7 @@ const Header: React.FC = () => {
               />
               Русский
             </MenuItem>
-            <MenuItem onClick={() => handleLanguageChange("Українська")}>
+            <MenuItem onClick={() => handleLanguageChange("Українська")}>  
               <img
                 src={Ua}
                 alt="Українська"
@@ -101,7 +105,7 @@ const Header: React.FC = () => {
               />
               Українська
             </MenuItem>
-            <MenuItem onClick={() => handleLanguageChange("English")}>
+            <MenuItem onClick={() => handleLanguageChange("English")}>  
               <img
                 src={Uk}
                 alt="English"
@@ -110,6 +114,8 @@ const Header: React.FC = () => {
               English
             </MenuItem>
           </Menu>
+
+          {/* Кнопка входа */}
           <Button color="inherit">Login</Button>
         </Box>
       </Toolbar>
