@@ -15,7 +15,11 @@ import Ua from "../assets/flagUa.png";
 import Uk from "../assets/flagUk.png";
 import { MAIN_COLORS } from "../root/color";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  backgroundColor: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ backgroundColor }) => {
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState<null | HTMLElement>(null);
   const [language, setLanguage] = React.useState("English");
 
@@ -39,11 +43,13 @@ const Header: React.FC = () => {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 1200,
-        backgroundColor: MAIN_COLORS.headerBG,
+        backgroundColor: backgroundColor,
+        transition: "background-color 0.3s ease",
         color: MAIN_COLORS.clrWhite,
-        paddingLeft:"100px",
-        paddingRight:"100px"
+        paddingLeft: "100px",
+        paddingRight: "100px",
+        height:"90px",
+        justifyContent:"center"
       }}
     >
       <Toolbar>
@@ -58,6 +64,7 @@ const Header: React.FC = () => {
 
         {/* Навигация */}
         <Box sx={{ display: "flex", alignItems: "center", marginRight: "450px", gap: "35px" }}>
+          <Button color="inherit">Theme</Button>
           <Button color="inherit">Search</Button>
           <Button color="inherit">Blog</Button>
           <Button color="inherit">Portfolio</Button>
@@ -97,7 +104,7 @@ const Header: React.FC = () => {
               />
               Русский
             </MenuItem>
-            <MenuItem onClick={() => handleLanguageChange("Українська")}>  
+            <MenuItem onClick={() => handleLanguageChange("Українська")}>
               <img
                 src={Ua}
                 alt="Українська"
@@ -105,7 +112,7 @@ const Header: React.FC = () => {
               />
               Українська
             </MenuItem>
-            <MenuItem onClick={() => handleLanguageChange("English")}>  
+            <MenuItem onClick={() => handleLanguageChange("English")}>
               <img
                 src={Uk}
                 alt="English"
@@ -124,4 +131,5 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
 
