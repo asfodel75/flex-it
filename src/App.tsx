@@ -1,12 +1,15 @@
 import React from 'react';
-import Header from './components/Header';
+import MainContainer from './components/MainContainer';
+import ServicesSection from './components/ServicesSection';
+
 
 
 
 function App() {
   return (
     <div>
-     <Header/>
+     <MainContainer/>
+     <ServicesSection/>
     </div>
  
   )
